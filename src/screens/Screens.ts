@@ -1,4 +1,5 @@
-export { SeekerScreen } from "./seeker/Seeker";
-export { AdventureScreen } from "./adventure/Adventure";
-export { HomeScreen } from "./home/Home";
-export { ProfileScreen } from "./profile/Profile";
+export { AdventureScreen } from "./adventure/AdventureScreen";
+export { HomeScreen } from "./home/HomeScreen";
+export { PermissionsScreen } from "./adventure/PermissionsScreen";
+export { ProfileScreen } from "./profile/ProfileScreen";
+export { SeekerScreen } from "./seeker/SeekerScreen";

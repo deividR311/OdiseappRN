@@ -2,9 +2,10 @@ import { StyleSheet } from 'react-native';
 
 export const colors = {
     primary     : 'indigo',
-    secondary   : 'pink',
+    secondary   : 'black',
     tertiary    : 'red',
-    inactive    : 'gray'
+    inactive    : 'gray',
+    white       : 'white'
 };
 
 export const appStyles = StyleSheet.create({
