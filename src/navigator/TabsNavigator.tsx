@@ -42,7 +42,8 @@ const Tabs = () => {
         tabBarIcon : (props) => setTabIcons(props, route.name),
         tabBarLabelStyle: { marginBottom: 3 },
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.inactive
+        tabBarInactiveTintColor: colors.inactive,
+        tabBarStyle: { backgroundColor: colors.secondary }
       })}
     >
       <Tab.Screen name="Home" options={{ headerShown: false }} component={ HomeStackNavigator } />

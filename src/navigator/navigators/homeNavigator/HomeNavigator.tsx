@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeNavigationParams, HomeNavigationRoute } from './PomeRouteInterfaces';
+import { HomeNavigationParams, HomeNavigationRoute } from './HomeRouteInterfaces';
 import { HomeScreen } from '../../../screens/Screens';
 
 const HomeStack = createStackNavigator<HomeNavigationParams>();
