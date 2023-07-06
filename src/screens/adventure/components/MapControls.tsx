@@ -13,6 +13,11 @@ export const MapControls = ({ following, setFollowing, showPolyline, setShowPoly
     return (
         <>
             <CustomFab
+                iconName="flag-outline"
+                onPress={() => console.log('this is to stop')}
+                style={{ position: 'absolute', bottom: 260, right: 20 }}
+            />
+            <CustomFab
                 iconName={(following) ? 'stop-outline' : 'play-outline'}
                 onPress={() => console.log('this is to stop the route recording')}
                 style={{ position: 'absolute', bottom: 200, right: 20 }}

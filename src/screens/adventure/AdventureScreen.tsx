@@ -3,6 +3,7 @@ import MapView from 'react-native-maps';
 import { useLocation } from '../../hooks/useLocation';
 import { CustomLoading } from '../../shared/components/CustomLoading';
 import { Map, MapControls } from './components/Components';
+import { useToast } from '../../hooks/useToast';
 
 
 export const AdventureScreen = () => {
@@ -14,6 +15,8 @@ export const AdventureScreen = () => {
             getCurrentLocation,
             followUserLocation,
             stopFollowUserLocation } = useLocation();
+
+    const { showToast } = useToast();
 
     const [showPolyline, setShowPolyline] = useState<boolean>(true);
     const [following, setFollowing] = useState<boolean>(false);
@@ -31,11 +34,11 @@ export const AdventureScreen = () => {
 
         const { latitude, longitude } = userLocation;
         animateMapCamera( latitude, longitude );
-    }, [ userLocation ])    
+    }, [ userLocation ])  
 
     const centerPosition = async () => {
         const { latitude, longitude } = await getCurrentLocation();
-
+        showToast('postion centrada');
         animateMapCamera( latitude, longitude );
     }
 
