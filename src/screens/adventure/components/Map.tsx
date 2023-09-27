@@ -1,21 +1,21 @@
 import React, { MutableRefObject, Dispatch, SetStateAction } from 'react';
 import { StyleSheet } from 'react-native';
 import MapView, { Marker, Polyline } from 'react-native-maps';
-import { Location } from '../../../hooks/useLocation';
+import { Location } from '../../../shared/hooks/useLocation';
 
 interface Props {
-    mapViewRef      : MutableRefObject<MapView | undefined>;
-    setFollowing    : Dispatch<SetStateAction<boolean>>;
-    initialPosition : Location;
-    showPolyline    : boolean;
-    routeLines      : Location[];
+    mapViewRef: MutableRefObject<MapView | undefined>;
+    setFollowing: Dispatch<SetStateAction<boolean>>;
+    initialPosition: Location;
+    showPolyline: boolean;
+    routeLines: Location[];
 }
 
-export const Map = ({ mapViewRef, setFollowing, initialPosition, showPolyline, routeLines } : Props) => {
+export const Map = ({ mapViewRef, setFollowing, initialPosition, showPolyline, routeLines }: Props) => {
     return (
         <>
             <MapView
-                ref={ (el) => mapViewRef.current = el! }
+                ref={(el) => mapViewRef.current = el!}
                 style={styles.map}
                 showsUserLocation
                 showsMyLocationButton={false}
@@ -25,16 +25,16 @@ export const Map = ({ mapViewRef, setFollowing, initialPosition, showPolyline, r
                     latitudeDelta: 0.015,
                     longitudeDelta: 0.0121,
                 }}
-                onTouchStart={ () => setFollowing(false) }
+                onTouchStart={() => setFollowing(false)}
             >
-                { showPolyline &&
+                {showPolyline &&
                     <Polyline
-                        coordinates={ routeLines }
+                        coordinates={routeLines}
                         strokeColor='black'
-                        strokeWidth={ 3 }
+                        strokeWidth={3}
                     />
                 }
-                
+
                 {/* <Marker
                     title='pin'
                     description='Im a pin'
@@ -51,7 +51,7 @@ export const Map = ({ mapViewRef, setFollowing, initialPosition, showPolyline, r
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1
+        flex: 1
     },
     map: {
         flex: 1

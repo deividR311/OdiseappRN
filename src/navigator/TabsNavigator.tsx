@@ -9,28 +9,28 @@ interface Props {
   size?: number;
 }
 
-const setTabIcons = ( props : Props, routeName : string ) => {
+const setTabIcons = (props: Props, routeName: string) => {
   const { color } = props;
 
   let iconName: string = '';
   switch (routeName) {
-  case 'Home' :
+    case 'Home':
       iconName = 'home-outline';
       break;
 
-  case 'Seeker' :
+    case 'Seeker':
       iconName = 'search-outline';
       break;
 
-  case 'Adventure' :
+    case 'Adventure':
       iconName = 'compass-outline';
       break;
 
-  case 'Profile' :
+    case 'Profile':
       iconName = 'person-outline';
       break;
   }
-  return <Icon name={ iconName } size={27} color={color} />;
+  return <Icon name={iconName} size={27} color={color} />;
 };
 
 const Tab = createBottomTabNavigator();
@@ -39,17 +39,17 @@ const Tabs = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon : (props) => setTabIcons(props, route.name),
+        tabBarIcon: (props) => setTabIcons(props, route.name),
         tabBarLabelStyle: { marginBottom: 3 },
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.inactive,
         tabBarStyle: { backgroundColor: colors.secondary }
       })}
     >
-      <Tab.Screen name="Home" options={{ headerShown: false }} component={ HomeStackNavigator } />
-      <Tab.Screen name="Seeker" options={{ headerShown: false }} component={ SeekerStackNavigator } />
-      <Tab.Screen name="Adventure" options={{ headerShown: false }} component={ AdventureStackNavigator } />
-      <Tab.Screen name="Profile" options={{ headerShown: false }} component={ ProfileStackNavigator } />
+      <Tab.Screen name="Home" options={{ headerShown: false }} component={HomeStackNavigator} />
+      <Tab.Screen name="Seeker" options={{ headerShown: false }} component={SeekerStackNavigator} />
+      <Tab.Screen name="Adventure" options={{ headerShown: false }} component={AdventureStackNavigator} />
+      <Tab.Screen name="Profile" options={{ headerShown: false }} component={ProfileStackNavigator} />
     </Tab.Navigator>
   );
 }

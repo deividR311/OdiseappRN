@@ -1,9 +1,9 @@
 export enum AdventureNavigationRoute {
-    AdventureScreen = 'AdventureScreen',
-    PermissionsScreen = 'PermissionsScreen',
-  }
+  AdventureScreen = 'AdventureScreen',
+  PermissionsScreen = 'PermissionsScreen'
+}
 
-  export type AdventureNavigationParams = {
-    [AdventureNavigationRoute.AdventureScreen]: undefined;
-    [AdventureNavigationRoute.PermissionsScreen]: undefined;
-  };
+export type AdventureNavigationParams = {
+  [AdventureNavigationRoute.AdventureScreen]: undefined;
+  [AdventureNavigationRoute.PermissionsScreen]: undefined
+};

@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Toast from 'react-native-toast-message';
 import Tabs from './src/navigator/TabsNavigator';
 import { AppPermissionsState } from './src/contexts/contexts';
-import { useToast } from './src/hooks/useToast';
+import { useToast } from './src/shared/hooks';
 
 const App = () => {
 
@@ -15,7 +15,7 @@ const App = () => {
     <NavigationContainer>
       <AppPermissionsState>
         <Tabs />
-        <Toast config={ toastConfig }/>
+        <Toast config={toastConfig} />
       </AppPermissionsState>
     </NavigationContainer>
   )

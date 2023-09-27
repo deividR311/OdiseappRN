@@ -10,18 +10,21 @@ interface Props {
 
 export const CustomButton = ( { title, onPress, style } : Props ) => {
     return (
-        <TouchableOpacity
-            onPress={ onPress }
-            activeOpacity={0.9}
-            style={ (style) ? style : { ...styles.button }}
-        >
-            <Text style={styles.buttonText}>{ title }</Text>
-        </TouchableOpacity>
+        <View style={ style }>
+            <TouchableOpacity
+                onPress={ onPress }
+                activeOpacity={0.9}
+                style={{ ...styles.button }}
+            >
+                <Text style={styles.buttonText}>{ title }</Text>
+            </TouchableOpacity>
+        </View>
     )
 };
 
 const styles = StyleSheet.create({
     button : {
+        zIndex: 9999,
         height: 50,
         width: 200,
         backgroundColor: colors.secondary,
@@ -38,7 +41,8 @@ const styles = StyleSheet.create({
     },
 
     buttonText: {
-        color: colors.white,
-        fontSize: 18
+        color: colors.tertiary,
+        fontSize: 18,
+        fontWeight: 'bold'
     }
 });
