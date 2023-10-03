@@ -7,9 +7,15 @@ class AdventureService extends BaseService {
     }
 
     getAdventures = async () => {
-        let response = await this.ADVENTURE_API.get(`adventure/getAll`);
-        return response.data;
+        let response = await this.get(`adventure/getAll`);
+        return response?.data;
     };
+
+    createAdventure = async (data: Adventure) => {
+        let response = await this.post(`adventure/382`, data);
+        return response?.data;
+    }
+
 }
 
 const adventureService = new AdventureService();

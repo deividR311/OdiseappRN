@@ -1,27 +1,27 @@
 import { User } from "./User";
 
 export interface Adventure {
-    idadventure: number;
+    idadventure?: number;
     iduser: number;
     nameAdventure: string;
     transports: null;
-    generalInfo: string;
-    citySource: string;
-    countrySource: string;
-    cityDestination: string;
-    countryDestination: string;
-    adventureSource: string;
-    adventureDestination: string;
-    distance: number;
-    totalCost: number;
-    price: number;
-    bestPhoto: string;
-    typeTravel: string;
-    durationDays: number;
+    generalInfo: string | null;
+    citySource: string | null;
+    countrySource: string | null;
+    cityDestination: string | null;
+    countryDestination: string | null;
+    adventureSource: string | null;
+    adventureDestination: string | null;
+    distance: number | null;
+    totalCost: number | null;
+    price: number | null;
+    bestPhoto: string | null;
+    typeTravel: string | null;
+    durationDays: number | null;
     isVisible: boolean;
-    baggage: string;
-    weather: string;
-    createdAt: string;
-    updatedAt: string;
-    user: User;
+    baggage: string | null;
+    weather: string | null;
+    createdAt?: string;
+    updatedAt?: string;
+    user?: User;
 }

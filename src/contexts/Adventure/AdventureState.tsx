@@ -5,6 +5,7 @@ import { AdventureStateInterface } from './Interfaces';
 import adventureReducer from './AdventureReducer';
 import adventureService from '../../services/Adventure.service';
 import AdventureContext from './AdventureContext';
+import { Adventure } from '../../models';
 
 interface props {
   children: JSX.Element | JSX.Element[]
@@ -12,7 +13,8 @@ interface props {
 
 const INITIAL_STATE: AdventureStateInterface = {
   adventures: [],
-  adventure: null
+  adventure: null,
+  adventureCreated: null
 }
 
 const AdventureState = ({ children }: props) => {
@@ -24,21 +26,29 @@ const AdventureState = ({ children }: props) => {
         console.log(response);
         dispatch({
           type: Types.ADVENTURES_ALL,
-          payload: { adventures: response, adventure: null }
+          payload: { ...adventureState, adventures: response }
         });
       }
-    ).catch(err => {
-      dispatch({
-        type: Types.ADVENTURES_ALL_ERROR,
-        payload: { adventures: [], adventure: null }
-      });
-    })
+    )
   };
+
+  const createAdventure = (data: Adventure) => {
+    adventureService.createAdventure(data).then(
+      (response) => {
+        console.log(response);
+        dispatch({
+          type: Types.CREATE_ADVENTURE,
+          payload: { ...adventureState, adventureCreated: response }
+        })
+      }
+    )
+  }
 
   return (
     <AdventureContext.Provider value={{
       adventureState,
-      getAdventures
+      getAdventures,
+      createAdventure
     }}>
       {children}
     </AdventureContext.Provider>

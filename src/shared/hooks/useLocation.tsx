@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import Geolocation from '@react-native-community/geolocation';
 
 export interface Location {
-    latitude  : number;
-    longitude : number;
+    latitude: number;
+    longitude: number;
 }
 
 export const useLocation = () => {
     const [hasLocation, setHasLocation] = useState(false);
-    const [initialPosition, setInitialPosition] = useState<Location>({ latitude : 0, longitude : 0 });
-    const [userLocation, setUserLocation] = useState<Location>({ latitude : 0, longitude : 0 });
+    const [initialPosition, setInitialPosition] = useState<Location>({ latitude: 0, longitude: 0 });
+    const [userLocation, setUserLocation] = useState<Location>({ latitude: 0, longitude: 0 });
     const [routeLines, setRouteLines] = useState<Location[]>([]);
 
     const watchId = useRef<number>();
@@ -17,32 +17,34 @@ export const useLocation = () => {
 
     useEffect(() => {
         isComponentMounted.current = true;
-    
-      return () => {
-        isComponentMounted.current = false;
-      }
+
+        return () => {
+            isComponentMounted.current = false;
+        }
     }, [])
-    
+
 
     useEffect(() => {
         getCurrentLocation().then(
             location => {
-                if ( !isComponentMounted.current ) return;
+                if (!isComponentMounted.current) return;
 
                 setInitialPosition(location);
-                setRouteLines(routes => [ ...routes, location ]);
+                setRouteLines(routes => [...routes, location]);
                 setHasLocation(true);
             }
-        );
+        ).catch(err => {
+            console.log(err);
+        })
     }, [])
 
     const getCurrentLocation = (): Promise<Location> => {
-        return new Promise( (resolve, reject) => {
+        return new Promise((resolve, reject) => {
             Geolocation.getCurrentPosition(
-                ({coords}) => {
+                ({ coords }) => {
                     resolve({
-                        latitude  : coords.latitude,
-                        longitude : coords.longitude
+                        latitude: coords.latitude,
+                        longitude: coords.longitude
                     });
                 },
                 (err) => reject(console.log({ err })), { enableHighAccuracy: true, timeout: 10000, maximumAge: 2000 }
@@ -53,22 +55,22 @@ export const useLocation = () => {
     const followUserLocation = () => {
         watchId.current = Geolocation.watchPosition(
             ({ coords }) => {
-                if ( !isComponentMounted.current ) return;
+                if (!isComponentMounted.current) return;
 
-                const location : Location = {
-                    latitude : coords.latitude,
+                const location: Location = {
+                    latitude: coords.latitude,
                     longitude: coords.longitude
                 }
 
                 setUserLocation(location);
-                setRouteLines(routes => [ ...routes, location ]);
+                setRouteLines(routes => [...routes, location]);
             },
             (err) => console.log(err), { enableHighAccuracy: true, distanceFilter: 10 }
         );
     }
 
     const stopFollowUserLocation = () => {
-        if ( !watchId.current ) return;
+        if (!watchId.current) return;
         Geolocation.clearWatch(watchId.current);
     }
 
