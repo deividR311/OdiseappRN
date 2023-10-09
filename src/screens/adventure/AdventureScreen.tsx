@@ -67,7 +67,7 @@ export const AdventureScreen = () => {
             createAdventure(form); // or update at the adventure final
     }, [form])
 
-    console.log(adventureState);
+    console.log('adventureState', adventureState);
 
     useEffect(() => {
         if (!following) return;

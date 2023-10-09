@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { AdventureStackNavigator, HomeStackNavigator, ProfileStackNavigator, SeekerStackNavigator } from './navigators/Navigators';
+import { AdventureStackNavigator, HomeStackNavigator, ProfileStackNavigator, SeekerStackNavigator } from './navigators';
 import { colors } from '../theme/AppTheme';
 
 interface Props {

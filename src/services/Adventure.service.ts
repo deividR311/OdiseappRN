@@ -1,5 +1,5 @@
 import { Adventure } from '../models';
-import BaseService from './Base.service';
+import BaseService from './settings/Base.service';
 
 class AdventureService extends BaseService {
     constructor() {
