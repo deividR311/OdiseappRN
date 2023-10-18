@@ -3,29 +3,29 @@ import { StyleProp, StyleSheet, Text, TouchableOpacity, View, ViewStyle } from '
 import { colors } from '../../theme/AppTheme';
 
 interface Props {
-    title   : string;
-    onPress : () => void;
-    style?  : StyleProp<ViewStyle>;
+    title: string;
+    onPress: () => void;
+    style?: StyleProp<ViewStyle>;
 }
 
-export const CustomButton = ( { title, onPress, style } : Props ) => {
+export const CustomButton = ({ title, onPress, style }: Props) => {
     return (
-        <View style={ style }>
+        <View style={style}>
             <TouchableOpacity
-                onPress={ onPress }
+                onPress={onPress}
                 activeOpacity={0.9}
                 style={{ ...styles.button }}
             >
-                <Text style={styles.buttonText}>{ title }</Text>
+                <Text style={styles.buttonText}>{title}</Text>
             </TouchableOpacity>
         </View>
     )
 };
 
 const styles = StyleSheet.create({
-    button : {
+    button: {
         zIndex: 9999,
-        height: 50,
+        height: 40,
         width: 200,
         backgroundColor: colors.secondary,
         borderRadius: 45,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 
     buttonText: {
         color: colors.tertiary,
-        fontSize: 18,
+        fontSize: 15,
         fontWeight: 'bold'
     }
 });

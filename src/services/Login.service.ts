@@ -1,3 +1,4 @@
+import { HttpResponse } from '../models';
 import BaseService from './settings/Base.service';
 
 export interface LoginInput {
@@ -10,7 +11,7 @@ class LoginService extends BaseService {
         super();
     }
 
-    login = async (data: LoginInput) => {
+    login = async (data: LoginInput): Promise<HttpResponse> => {
         let response = await this.post(`auth/login`, data);
         return response?.data;
     }

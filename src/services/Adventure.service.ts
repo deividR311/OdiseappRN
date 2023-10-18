@@ -1,4 +1,4 @@
-import { Adventure } from '../models';
+import { Adventure, HttpResponse } from '../models';
 import BaseService from './settings/Base.service';
 
 class AdventureService extends BaseService {
@@ -6,16 +6,25 @@ class AdventureService extends BaseService {
         super();
     }
 
-    getAdventures = async () => {
-        let response = await this.get(`adventure/getAll`);
+    getAdventures = async (): Promise<HttpResponse> => {
+        let response = await this.getAll(`adventure/getAll`);
         return response?.data;
     };
 
-    createAdventure = async (data: Adventure) => {
-        let response = await this.post(`adventure/382`, data);
+    getAdventureById = async (id: number): Promise<HttpResponse> => {
+        let response = await this.getById(`adventure/`, id);
+        return response?.data;
+    };
+
+    createAdventure = async (url: string, data: Adventure): Promise<HttpResponse> => {
+        let response = await this.post(url, data);
         return response?.data;
     }
 
+    updateAdventure = async (url: string, data: Adventure): Promise<HttpResponse> => {
+        let response = await this.put(url, data);
+        return response?.data;
+    }
 }
 
 const adventureService = new AdventureService();

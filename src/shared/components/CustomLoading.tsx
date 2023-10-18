@@ -4,9 +4,9 @@ import { colors } from '../../theme/AppTheme';
 
 export const CustomLoading = () => {
     return (
-        <View style={ styles.container }>
+        <View style={styles.container}>
             <ActivityIndicator
-                size={ 50 }
+                size={50}
                 color={colors.secondary}
             />
         </View>
@@ -14,7 +14,7 @@ export const CustomLoading = () => {
 };
 
 const styles = StyleSheet.create({
-    container : {
+    container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'

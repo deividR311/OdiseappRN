@@ -9,8 +9,8 @@ const Stack = createStackNavigator<NavigationParams>();
 export const NavigatorApp = () => {
     return (
         <Stack.Navigator>
-            {/* <Stack.Screen name={NavigationRoute.Tabs} options={{ title: 'Login' }} component={LoginStackNavigator} /> */}
-            <Stack.Screen name={NavigationRoute.Login} options={{ title: 'Tabs', headerShown: false }} component={Tabs} />
+            {/* <Stack.Screen name={NavigationRoute.Login} options={{ title: 'Login', headerShown: false }} component={LoginStackNavigator} /> */}
+            <Stack.Screen name={NavigationRoute.Tabs} options={{ title: 'Tabs', headerShown: false }} component={Tabs} />
         </Stack.Navigator>
     );
 };

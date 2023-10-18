@@ -1,3 +1,14 @@
 {
-    "stopCreated" : "Aventura creada"
+    "stopCreated": "Aventura creada",
+    "email": "Correo electronico",
+    "password": "Contraseña",
+    "login": "Iniciar sesion",
+    "signup": "Crear cuenta",
+    "mightToWriteEmail": "Debes ingresar un correo",
+    "mightToBeEmail": "Debe ser un correo valido",
+    "mightToWritePassword": "Debes ingresar una contraseña",
+    "unauthorized": "Sesión expirada",
+    "badRequest": "Consulta no valida",
+    "serverError": "Error interno",
+    "notFound": "Servicio no encontrado"
 }

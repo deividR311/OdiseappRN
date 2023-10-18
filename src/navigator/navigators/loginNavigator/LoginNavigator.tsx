@@ -8,7 +8,7 @@ const LoginStack = createStackNavigator<LoginNavigationParams>();
 export const LoginStackNavigator = () => {
     return (
         <LoginStack.Navigator initialRouteName={LoginNavigationRoute.LoginScreen}>
-            <LoginStack.Screen name={LoginNavigationRoute.LoginScreen} options={{ title: 'Login' }} component={LoginScreen} />
+            <LoginStack.Screen name={LoginNavigationRoute.LoginScreen} options={{ title: 'Login', headerShown: false }} component={LoginScreen} />
         </LoginStack.Navigator>
     )
 };
