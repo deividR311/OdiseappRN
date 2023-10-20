@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { CustomInput } from '../../shared/components/CustomInput';
-import { useForm, useI18n } from '../../shared/hooks';
-import { LoginInterface } from '../../interfaces/LoginInterface';
-import { CustomKeyBoard } from '../../shared/components/CustomKeyBoard';
-import { CustomButton } from '../../shared/components/CustomButton';
+
 import { colors } from '../../theme/AppTheme';
+import { LoginInterface } from '../../interfaces/LoginInterface';
 import loginService from '../../services/Login.service';
-import { CustomFormValidation } from '../../shared/components/CustomFormValidation';
-import { useFormValidator } from '../../shared/hooks/useFormValidator';
+import { useForm, useFormValidator, useI18n } from '../../shared/hooks';
+import { CustomKeyBoard, CustomButton, CustomFormValidation, CustomInput } from '../../shared/components';
 
 export const LoginScreen = () => {
     const { t } = useI18n();

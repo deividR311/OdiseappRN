@@ -6,24 +6,24 @@ class AdventureService extends BaseService {
         super();
     }
 
-    getAdventures = async (): Promise<HttpResponse> => {
+    getAdventures = async (): Promise<Adventure[]> => {
         let response = await this.getAll(`adventure/getAll`);
-        return response?.data;
+        return response?.data.response;
     };
 
-    getAdventureById = async (id: number): Promise<HttpResponse> => {
+    getAdventureById = async (id: number): Promise<Adventure> => {
         let response = await this.getById(`adventure/`, id);
-        return response?.data;
+        return response?.data.response;
     };
 
-    createAdventure = async (url: string, data: Adventure): Promise<HttpResponse> => {
-        let response = await this.post(url, data);
-        return response?.data;
+    createAdventure = async (data: Adventure): Promise<Adventure> => {
+        let response = await this.post(`adventure/create`, data);
+        return response?.data.response;
     }
 
-    updateAdventure = async (url: string, data: Adventure): Promise<HttpResponse> => {
+    updateAdventure = async (url: string, data: Adventure): Promise<Adventure> => {
         let response = await this.put(url, data);
-        return response?.data;
+        return response?.data.response;
     }
 }
 

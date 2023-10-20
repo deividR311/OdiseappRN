@@ -1,14 +1,14 @@
 import React, { MutableRefObject, Dispatch, SetStateAction } from 'react';
 import { StyleSheet } from 'react-native';
 import MapView, { Marker, Polyline } from 'react-native-maps';
-import { Location } from '../../../shared/hooks/useLocation';
+import { LocationInterface } from '../../../interfaces';
 
 interface Props {
     mapViewRef: MutableRefObject<MapView | undefined>;
     setFollowing: Dispatch<SetStateAction<boolean>>;
-    initialPosition: Location;
+    initialPosition: LocationInterface;
     showPolyline: boolean;
-    routeLines: Location[];
+    routeLines: LocationInterface[];
 }
 
 export const Map = ({ mapViewRef, setFollowing, initialPosition, showPolyline, routeLines }: Props) => {

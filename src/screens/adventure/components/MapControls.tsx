@@ -1,5 +1,5 @@
 import React from 'react';
-import { CustomFab, CustomButton, CustomIcon } from '../../../shared/components/sharedComponents';
+import { CustomFab, CustomButton, CustomIcon } from '../../../shared/components';
 
 interface Props {
     following: boolean;

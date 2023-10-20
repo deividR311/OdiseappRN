@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Platform } from 'react-native';
-import { CustomSearchInput } from '../../shared/components/sharedComponents';
+import { CustomSearchInput } from '../../shared/components';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const DestinySeekerScreen = () => {

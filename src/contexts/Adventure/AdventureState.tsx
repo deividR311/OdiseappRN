@@ -23,7 +23,6 @@ const AdventureState = ({ children }: props) => {
   const getAdventures = () => {
     adventureService.getAdventures().then(
       (response) => {
-        console.log(response);
         dispatch({
           type: Types.ADVENTURES_ALL,
           payload: { ...adventureState, adventures: response }

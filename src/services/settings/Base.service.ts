@@ -14,7 +14,8 @@ class BaseService {
             baseURL: `${REACT_APP_API}`,
             timeout: 15000,
             headers: {
-                'Content-type': 'application/json'
+                'Content-type': 'application/json',
+                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiMSIsImlhdCI6MTY5Nzc0MDU5OSwiZXhwIjoxNzAwMzMyNTk5fQ.Iye5ckPIf6H8W7vzWezbHEdGdbZe0yf2HMkxCRPHHFs'
             }
         });
 

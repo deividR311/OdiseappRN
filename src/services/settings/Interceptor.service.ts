@@ -1,14 +1,11 @@
-
 import { AxiosInstance } from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import { useI18n, useToast } from '../../shared/hooks';
 import { HttpCodes } from '../../utilities/catalogs/HttpCodes';
 import { HomeNavigationRoute } from '../../navigator/navigators/homeNavigator/HomeRouteInterfaces';
-
-const { showToast } = useToast();
-const { t } = useI18n();
-
 class InterceptorService {
+    toast = useToast();
+    i18n = useI18n();
     navigator = useNavigation();
 
     constructor(private ADVENTURE_API: AxiosInstance) { }
@@ -22,19 +19,19 @@ class InterceptorService {
                 switch (status) {
                     case HttpCodes.UNAUTHORIZED:
                         this.navigator.navigate(HomeNavigationRoute.HomeScreen as never)
-                        showToast(t('unauthorized'));
+                        this.toast.showToast(this.i18n.t('unauthorized'));
                         break;
 
                     case HttpCodes.BAD_REQUEST:
-                        showToast(t('badRequest'));
+                        this.toast.showToast(this.i18n.t('badRequest'));
                         break;
 
                     case HttpCodes.INTERNAL_SERVER_ERROR:
-                        showToast(t('serverError'));
+                        this.toast.showToast(this.i18n.t('serverError'));
                         break;
 
                     case HttpCodes.NOT_FOUND:
-                        showToast(t('notFound'));
+                        this.toast.showToast(this.i18n.t('notFound'));
                         break;
 
                     default:

@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { AdventureNavigationParams, AdventureNavigationRoute } from './AdventureRouteInterfaces';
 import { AdventureScreen, PermissionsScreen } from '../../../screens/Screens';
 import AppPermissionsContext from '../../../contexts/AppPermissions/AppPermissionsContext';
-import { CustomLoading } from '../../../shared/components/sharedComponents';
+import { CustomLoading } from '../../../shared/components';
 import AdventureState from '../../../contexts/Adventure/AdventureState';
 
 const AdventureStack = createStackNavigator<AdventureNavigationParams>();

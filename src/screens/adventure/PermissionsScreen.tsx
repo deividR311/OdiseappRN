@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import AppPermissionsContext from '../../contexts/AppPermissions/AppPermissionsContext';
-import { CustomButton } from '../../shared/components/sharedComponents';
+import { CustomButton } from '../../shared/components';
 import { colors } from '../../theme/AppTheme';
 
 export const PermissionsScreen = () => {
@@ -23,7 +23,7 @@ export const PermissionsScreen = () => {
             />
 
             <Text>
-                { JSON.stringify(permissions, null, 5) }
+                {JSON.stringify(permissions, null, 5)}
             </Text>
         </View>
     )

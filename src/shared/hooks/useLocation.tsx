@@ -1,16 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import Geolocation from '@react-native-community/geolocation';
-
-export interface Location {
-    latitude: number;
-    longitude: number;
-}
+import { LocationInterface } from '../../interfaces';
 
 export const useLocation = () => {
     const [hasLocation, setHasLocation] = useState(false);
-    const [initialPosition, setInitialPosition] = useState<Location>({ latitude: 0, longitude: 0 });
-    const [userLocation, setUserLocation] = useState<Location>({ latitude: 0, longitude: 0 });
-    const [routeLines, setRouteLines] = useState<Location[]>([]);
+    const [initialPosition, setInitialPosition] = useState<LocationInterface>({ latitude: 0, longitude: 0 });
+    const [userLocation, setUserLocation] = useState<LocationInterface>({ latitude: 0, longitude: 0 });
+    const [routeLines, setRouteLines] = useState<LocationInterface[]>([]);
 
     const watchId = useRef<number>();
     const isComponentMounted = useRef<boolean>(true);
@@ -38,7 +34,7 @@ export const useLocation = () => {
         })
     }, [])
 
-    const getCurrentLocation = (): Promise<Location> => {
+    const getCurrentLocation = (): Promise<LocationInterface> => {
         return new Promise((resolve, reject) => {
             Geolocation.getCurrentPosition(
                 ({ coords }) => {
@@ -57,7 +53,7 @@ export const useLocation = () => {
             ({ coords }) => {
                 if (!isComponentMounted.current) return;
 
-                const location: Location = {
+                const location: LocationInterface = {
                     latitude: coords.latitude,
                     longitude: coords.longitude
                 }
