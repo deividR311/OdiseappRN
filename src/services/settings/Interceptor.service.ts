@@ -2,11 +2,14 @@ import { AxiosInstance } from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import { useI18n, useToast } from '../../shared/hooks';
 import { HttpCodes } from '../../utilities/catalogs/HttpCodes';
-import { HomeNavigationRoute } from '../../navigator/navigators/homeNavigator/HomeRouteInterfaces';
+import { StackScreenProps } from '@react-navigation/stack';
+import { LoginNavigationRoute } from '../../navigator/navigators/loginNavigator/LoginRouteInterfaces';
+
 class InterceptorService {
     toast = useToast();
     i18n = useI18n();
-    navigator = useNavigation();
+    navigator!: StackScreenProps<any, any>;
+
 
     constructor(private ADVENTURE_API: AxiosInstance) { }
 
@@ -18,7 +21,7 @@ class InterceptorService {
                 console.log('error', err);
                 switch (status) {
                     case HttpCodes.UNAUTHORIZED:
-                        this.navigator.navigate(HomeNavigationRoute.HomeScreen as never)
+                        this.navigator.navigation.replace(LoginNavigationRoute.LoginScreen as never)
                         this.toast.showToast(this.i18n.t('unauthorized'));
                         break;
 

@@ -2,12 +2,13 @@ import axios, { AxiosInstance } from 'axios';
 import { REACT_APP_API } from 'react-native-dotenv';
 import { useNavigation } from '@react-navigation/native';
 import InterceptorService from './Interceptor.service';
-
+import { useAsyncStorage } from '../../shared/hooks';
 
 class BaseService {
     ADVENTURE_API: AxiosInstance;
     interceptor: InterceptorService;
     navigator = useNavigation();
+    asyncStorage = useAsyncStorage();
 
     constructor() {
         this.ADVENTURE_API = axios.create({
@@ -15,13 +16,25 @@ class BaseService {
             timeout: 15000,
             headers: {
                 'Content-type': 'application/json',
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiMSIsImlhdCI6MTY5Nzc0MDU5OSwiZXhwIjoxNzAwMzMyNTk5fQ.Iye5ckPIf6H8W7vzWezbHEdGdbZe0yf2HMkxCRPHHFs'
+                'Authorization': this._getToken()
             }
         });
 
         this.interceptor = new InterceptorService(this.ADVENTURE_API);
 
         this.interceptor.apiInterceptor();
+        console.log(this._getToken());
+    }
+
+    private _getToken = () => {
+        let token: string | null | undefined = null;
+        this.asyncStorage.getStorage('token').then(
+            res => {
+                token = res;
+            }
+        );
+
+        return token;
     }
 
     async getAll(url: string) {

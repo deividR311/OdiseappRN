@@ -1,12 +1,14 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { useContext } from 'react';
+import { View } from 'react-native';
+import { CustomButton } from '../../shared/components/CustomButton';
+import AuthContext from '../../contexts/Auth/AuthContext';
 
 export const HomeScreen = () => {
-return (
-        <View style={{ flex : 1 }}>
-            <Text>
-            HomeScreen
-            </Text>
+
+    const { logOut } = useContext(AuthContext);
+    return (
+        <View style={{ flex: 1 }}>
+            <CustomButton title='Log out' onPress={logOut} />
         </View>
     )
 };

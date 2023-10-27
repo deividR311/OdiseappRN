@@ -6,6 +6,7 @@ import Toast from 'react-native-toast-message';
 import { AppPermissionsState } from './src/contexts/contexts';
 import { useToast } from './src/shared/hooks';
 import { NavigatorApp } from './src/navigator/Navigator';
+import AuthState from './src/contexts/Auth/AuthState';
 
 const App = () => {
 
@@ -14,7 +15,9 @@ const App = () => {
   return (
     <NavigationContainer>
       <AppPermissionsState>
-        <NavigatorApp />
+        <AuthState>
+          <NavigatorApp />
+        </AuthState>
         <Toast config={toastConfig} />
       </AppPermissionsState>
     </NavigationContainer>

@@ -20,8 +20,18 @@ export const useAsyncStorage = () => {
         }
     };
 
+    const removeStorage = async (key: string): Promise<void> => {
+        try {
+            const value = await AsyncStorage.removeItem(key);
+            return value;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return {
-        setStorage,
-        getStorage
+        getStorage,
+        removeStorage,
+        setStorage
     }
 }

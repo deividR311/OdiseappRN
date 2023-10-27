@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect, useContext } from 'react';
+import { StyleSheet, Text, View, Keyboard } from 'react-native';
 
 import { colors } from '../../theme/AppTheme';
+import AuthContext from '../../contexts/Auth/AuthContext';
 import { LoginInterface } from '../../interfaces/LoginInterface';
-import loginService from '../../services/Login.service';
-import { useForm, useFormValidator, useI18n } from '../../shared/hooks';
+import { useForm, useFormValidator, useI18n, useToast } from '../../shared/hooks';
 import { CustomKeyBoard, CustomButton, CustomFormValidation, CustomInput } from '../../shared/components';
 
+
 export const LoginScreen = () => {
+    const { showToast } = useToast();
     const { t } = useI18n();
+    const { login, logOut, authState } = useContext(AuthContext);
+    const { error, message } = authState;
     const [formError, setFormError] = useState<boolean>(false);
     const [formErrorMessage, setFormErrorMessage] = useState<string>('');
     const { form, handleChange } = useForm<LoginInterface>({
@@ -21,6 +25,17 @@ export const LoginScreen = () => {
             setFormError(false);
         }
     }, [form])
+
+    useEffect(() => {
+        if (error) {
+            (message)
+                ? showToast(message)
+                : showToast(t('serverError'));
+
+            logOut();
+        }
+
+    }, [error])
 
 
     const formValidation = () => {
@@ -43,21 +58,12 @@ export const LoginScreen = () => {
             return;
         }
 
-        login();
+        authLogin();
     }
 
-    const login = () => {
-        loginService.login(form).then(
-            res => {
-                // async storage
-
-                // go to tabs
-            }
-        ).catch(
-            err => {
-                console.log(err.response.data);
-            }
-        )
+    const authLogin = () => {
+        login(form);
+        Keyboard.dismiss();
     }
 
     const goToRegister = () => {
